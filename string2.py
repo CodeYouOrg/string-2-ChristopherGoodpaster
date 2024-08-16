@@ -10,7 +10,16 @@
 
 def verbing(s):
     # +++your code here+++
+def add_ing_or_ly(word):
+    if len(word) < 3:
+        return word
+    if word.endswith('ing'):
+        return word + 'ly'
+    return word + 'ing'
     return
+print(add_ing_or_ly('play'))    # Output will be 'playing'
+print(add_ing_or_ly('playing')) # Output will be 'playingly'
+print(add_ing_or_ly('do'))      # Output will be 'do'
 
 
 # E. not_bad
@@ -24,7 +33,22 @@ def verbing(s):
 
 def not_bad(s):
     # +++your code here+++
+    def not_bad(s):
+    not_index = s.find('not')
+    bad_index = s.find('bad')
+    
+    if not_index != -1 and bad_index != -1 and bad_index > not_index:
+        return s[:not_index] + 'good' + s[bad_index + 3:]
+    
+    return s
+    
     return
+
+print(not_bad('This dinner is not that bad!'))  # Output will be 'This dinner is good!'
+print(not_bad('This movie is not so bad.'))     # Output will be 'This movie is good.'
+print(not_bad('This is not bad at all!'))       # Output will be 'This is good at all!'
+print(not_bad('This is bad, not good.'))        # Output will be 'This is bad, not good.'
+
 
 
 # F. front_back
@@ -37,7 +61,21 @@ def not_bad(s):
 
 def front_back(a, b):
     # +++your code here+++
+def split_string(s):
+    mid = (len(s) + 1) // 2  # Determine the midpoint, adding 1 ensures the extra char goes to the front half if the length is odd.
+    return s[:mid], s[mid:]   # Return the front and back halves as a tuple.
+
+def front_back(a, b):
+    a_front, a_back = split_string(a)  # Split string 'a' into front and back halves.
+    b_front, b_back = split_string(b)  # Split string 'b' into front and back halves.
+    return a_front + b_front + a_back + b_back  # Combine the halves in the specified order.
+
     return
+
+print(front_back('abcd', 'xy'))    # Output will be 'abxcdy'
+print(front_back('abcde', 'xyz'))  # Output will be 'abcxydez'
+print(front_back('Kitten', 'Donut')) # Output will be 'KitDontenut'
+
 
 
 # Simple provided test() function used in main() to print
